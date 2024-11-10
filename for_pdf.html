@@ -44,7 +44,6 @@
                         </li>
                         <li>
                             <a
-                                href="https://github.com/AlexUnderOS"
                                 target="_blank"
                                 ><i class="fa-brands fa-github"></i
                                 >https://github.com/AlexUnderOS</a
@@ -112,23 +111,5 @@
                 </div>
             </main>
         </div>
-        <script>
-            function generatePDF() {
-                const element = document.getElementById('cvBody')
-
-                const options = {
-                    filename: 'CV.pdf',
-                    image: { type: 'jpeg', quality: 0.9 },
-                    html2canvas: { scale: 3 },
-                    jsPDF: {
-                        unit: 'in',
-                        format: 'a4',
-                        orientation: 'portrait',
-                    },
-                }
-
-                html2pdf().set(options).from(element).save()
-            }
-        </script>
     </body>
 </html>
