@@ -1,2 +1,2 @@
 # cv_ostapjuks
-my cv
+[my cv](https://alexunderos.github.io/cv_ostapjuks/)
