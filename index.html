@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="lv">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CV - Aleksandrs Ostapjuks</title>
+        <link rel="stylesheet" href="global.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        />
+        <style>
+            .disabled-link {
+                pointer-events: none;
+                color: rgb(195, 195, 195);
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="pdf-content" style="display: none"></div>
+        <div class="top-content">
+            <div class="to-load">
+                <h4>PDF</h4>
+                <a href="#" onclick="generatePDF()"
+                    ><i class="fa-solid fa-download"></i
+                ></a>
+            </div>
+            <div class="languages">
+                <a href="/">LV</a>
+                <a href="#" class="disabled-link">RU</a>
+                <a href="#" class="disabled-link">EN</a>
+            </div>
+        </div>
+        <div class="cv-body" id="cvBody">
+            <header class="top-header">
+                <h1>Aleksandrs Ostapjuks</h1>
+                <h2>Front-end developer</h2>
+                <div class="contacts">
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i
+                            >alexunderostapjuk@gmail.com
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>+371 253 966 67
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>Latvija -
+                            Lipepāja
+                        </li>
+                        <li>
+                            <a
+                                href="https://github.com/AlexUnderOS"
+                                target="_blank"
+                                ><i class="fa-brands fa-github"></i
+                                >GitHub.com</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </header>
+            <main>
+                <div class="grid-page">
+                    <div class="career-objective">
+                        <p>
+                            Front-end programmētājs, man interesē lietotāja
+                            interfeisa izstrāde, orientējoties uz ReactJS, HTML
+                            un CSS tīmekļa vietņu izkārtojumu, veidojot
+                            praktiskus UI/UX dizainus.
+                        </p>
+                        <h4>Esošie mērķi:</h4>
+                        <ul>
+                            <li>
+                                Padziļināt savas zināšanas par WEB,
+                                koncentrējoties uz React bibliotēku
+                            </li>
+                            <li>Izprast izstrādes principus komerciālā jomā</li>
+                        </ul>
+                    </div>
+                    <div class="education">
+                        <h3>Izglītība</h3>
+                        <div class="lvt">Liepājas Valsts tehnikums</div>
+                        <p>
+                            <i class="fa-solid fa-location-dot"></i>Ventspils
+                            iela 51
+                        </p>
+                        <p>
+                            <i class="fa-solid fa-calendar-days"></i>2022 - 2026
+                        </p>
+                        <p class="specialty-context">
+                            <i class="fa-solid fa-briefcase"></i>Spec.:
+                            programmēšanas tehniķis
+                        </p>
+                    </div>
+                    <div class="mini-project">
+                        <h3>Mini demonstrējumu projekts</h3>
+                        <div class="content">
+                            <div class="site-link">
+                                <a href="#" target="_blank">
+                                    <img
+                                        class="pizza-i"
+                                        src="./images/pizza.svg"
+                                        alt="pizza icon"
+                                        draggable="false"
+                                    />
+                                    <img
+                                        class="plus-i"
+                                        src="./images/plus.svg"
+                                        alt="plus icon"
+                                        draggable="false"
+                                    />
+                                    <img
+                                        class="react-i"
+                                        src="./images/React-icon.svg"
+                                        alt="react icon"
+                                        draggable="false"
+                                    />
+                                </a>
+                            </div>
+                            <div class="context">
+                                <p>
+                                    Projekts, kas demonstrē lielāko daļu no
+                                    manas prasmes web izstrādē. Vairāk
+                                    informācijas -
+                                    <a href="#">dokumentācijā.</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <h3>Prasmes</h3>
+                        <h4>Languages</h4>
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                        </ul>
+                        <h4>Libraries</h4>
+                        <ul>
+                            <li>React</li>
+                            <li>jQuery</li>
+                            <li>Redux</li>
+                        </ul>
+                        <h4>Frameworks</h4>
+                        <ul>
+                            <li>Node.js</li>
+                        </ul>
+                        <h4>Testing</h4>
+                        <ul>
+                            <li>Jest</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script>
+            async function generatePDF() {
+                const response = await fetch('./for_pdf.html')
+                const htmlText = await response.text()
+
+                const pdfContent = document.getElementById('pdf-content')
+                pdfContent.innerHTML = htmlText
+                pdfContent.style.display = 'block'
+
+                const canvas = await html2canvas(pdfContent, { scale: 2 })
+                const imgData = canvas.toDataURL('image/png')
+
+                const { jsPDF } = window.jspdf
+                const pdf = new jsPDF('p', 'mm', 'a4')
+                const pageWidth = pdf.internal.pageSize.getWidth()
+                const pageHeight = pdf.internal.pageSize.getHeight()
+
+                const imgWidth = Math.min(pageWidth * 1.2, canvas.width / 2)
+                const imgHeight = (canvas.height * imgWidth) / canvas.width
+
+                //       ...(data, format, xoffset, yoffset, width, height)
+                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight)
+
+                pdf.save('CV.pdf')
+
+                pdfContent.style.display = 'none'
+            }
+        </script>
+    </body>
+</html>

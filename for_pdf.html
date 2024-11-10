@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="lv">
+    <head>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        />
+        <link rel="stylesheet" href="global.css" />
+        <style>
+            html,
+            body {
+                margin: 0;
+                font-family: Arial;
+                width: 1000px;
+            }
+            .cv-body {
+                border: none;
+                padding: 20px;
+                background: white;
+            }
+
+            .grid-page {
+                grid-template-columns: 0.3fr 0.5fr;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="cv-body" id="cvBody">
+            <header class="top-header">
+                <h1>Aleksandrs Ostapjuks</h1>
+                <h2>Front-end developer</h2>
+                <div class="contacts">
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i
+                            >alexunderostapjuk@gmail.com
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>+371 253 966 67
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>Latvija -
+                            Lipepāja
+                        </li>
+                        <li>
+                            <a
+                                href="https://github.com/AlexUnderOS"
+                                target="_blank"
+                                ><i class="fa-brands fa-github"></i
+                                >https://github.com/AlexUnderOS</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </header>
+            <main>
+                <div class="grid-page">
+                    <div class="career-objective">
+                        <p>
+                            Front-end programmētājs, man interesē lietotāja
+                            interfeisa izstrāde, orientējoties uz ReactJS, HTML
+                            un CSS tīmekļa vietņu izkārtojumu, veidojot
+                            praktiskus UI/UX dizainus.
+                        </p>
+                        <h4>Esošie mērķi:</h4>
+                        <ul>
+                            <li>
+                                Padziļināt savas zināšanas par WEB,
+                                koncentrējoties uz React bibliotēku
+                            </li>
+                            <li>Izprast izstrādes principus komerciālā jomā</li>
+                        </ul>
+                    </div>
+                    <div class="education">
+                        <h3>Izglītība</h3>
+                        <div class="lvt">Liepājas Valsts tehnikums</div>
+                        <p>
+                            <i class="fa-solid fa-location-dot"></i>Ventspils
+                            iela 51
+                        </p>
+                        <p>
+                            <i class="fa-solid fa-calendar-days"></i>2022 - 2026
+                        </p>
+                        <p class="specialty-context">
+                            <i class="fa-solid fa-briefcase"></i>Spec.:
+                            programmēšanas tehniķis
+                        </p>
+                    </div>
+                    <div class="skills">
+                        <h3>Prasmes</h3>
+                        <h4>Languages</h4>
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                        </ul>
+                        <h4>Libraries</h4>
+                        <ul>
+                            <li>React</li>
+                            <li>jQuery</li>
+                            <li>Redux</li>
+                        </ul>
+                        <h4>Frameworks</h4>
+                        <ul>
+                            <li>Node.js</li>
+                        </ul>
+                        <h4>Testing</h4>
+                        <ul>
+                            <li>Jest</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script>
+            function generatePDF() {
+                const element = document.getElementById('cvBody')
+
+                const options = {
+                    filename: 'CV.pdf',
+                    image: { type: 'jpeg', quality: 0.9 },
+                    html2canvas: { scale: 3 },
+                    jsPDF: {
+                        unit: 'in',
+                        format: 'a4',
+                        orientation: 'portrait',
+                    },
+                }
+
+                html2pdf().set(options).from(element).save()
+            }
+        </script>
+    </body>
+</html>
