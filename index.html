@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="lv">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="global.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script src="./translate.js"></script>
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -29,9 +30,9 @@
                 ></a>
             </div>
             <div class="languages">
-                <a href="/">LV</a>
-                <a href="#" class="disabled-link">RU</a>
-                <a href="#" class="disabled-link">EN</a>
+                <a href="#" onclick="switchLanguage('lv')">LV</a>
+                <a href="#" onclick="switchLanguage('ru')">RU</a>
+                <a href="#" onclick="switchLanguage('en')">EN</a>
             </div>
         </div>
         <div class="cv-body" id="cvBody">
@@ -65,23 +66,15 @@
             <main>
                 <div class="grid-page">
                     <div class="career-objective">
-                        <p>
-                            Front-end programmētājs, man interesē lietotāja
-                            interfeisa izstrāde, orientējoties uz ReactJS, HTML
-                            un CSS tīmekļa vietņu izkārtojumu, veidojot
-                            praktiskus UI/UX dizainus.
-                        </p>
-                        <h4>Esošie mērķi:</h4>
+                        <p>About</p>
+                        <h4>Current goals:</h4>
                         <ul>
-                            <li>
-                                Padziļināt savas zināšanas par WEB,
-                                koncentrējoties uz React bibliotēku
-                            </li>
-                            <li>Izprast izstrādes principus komerciālā jomā</li>
+                            <li></li>
+                            <li></li>
                         </ul>
                     </div>
                     <div class="education">
-                        <h3>Izglītība</h3>
+                        <h3>Education</h3>
                         <div class="lvt">Liepājas Valsts tehnikums</div>
                         <p>
                             <i class="fa-solid fa-location-dot"></i>Ventspils
@@ -92,11 +85,11 @@
                         </p>
                         <p class="specialty-context">
                             <i class="fa-solid fa-briefcase"></i>Spec.:
-                            programmēšanas tehniķis
+                            <span id="specContainer"></span>
                         </p>
                     </div>
                     <div class="mini-project">
-                        <h3>Mini demonstrējumu projekts</h3>
+                        <h3>Mini project demonstration</h3>
                         <div class="content">
                             <div class="site-link">
                                 <a
@@ -125,20 +118,24 @@
                             </div>
                             <div class="context">
                                 <p>
-                                    Projekts, kas demonstrē lielāko daļu no
-                                    manas prasmes web izstrādē. Vairāk
-                                    informācijas -
-                                    <a
-                                        href="https://github.com/AlexUnderOS/PizzaOsta"
-                                        target="_blank"
-                                        >dokumentācijā.</a
-                                    >
+                                </p>
+                                <a
+                                    href="https://github.com/AlexUnderOS/PizzaOsta"
+                                    target="_blank"
+                                >
+                                    here</a
+                                >
+                                <p class="warning">
+                                    <i
+                                        class="fa-solid fa-circle-exclamation"
+                                    ></i>
+                                    <span id="warningContainer"></span>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="skills">
-                        <h3>Prasmes</h3>
+                        <h3>Skills</h3>
                         <h4>Languages</h4>
                         <ul>
                             <li>HTML</li>

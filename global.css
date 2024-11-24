@@ -30,6 +30,11 @@ body {
     padding: 0 5px;
 }
 
+.top-content a.active {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 
 .cv-body {
     border: 4px solid black;
@@ -174,6 +179,12 @@ i {
 
 .mini-project .plus-i {
     width: 1.5rem;
+}
+
+.warning {
+    margin-top: 40px;
+    color: var(--main-color);
+    font-weight: 600;
 }
 
 @keyframes rotation-r {
